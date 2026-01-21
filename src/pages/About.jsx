@@ -4,25 +4,34 @@ function About() {
   return (
     <div className="about">
       <section className="about-hero">
-        <h1>About Delicious Bites</h1>
+        <h1>About B.O.R.G. Night</h1>
       </section>
 
       <article className="about-content">
         <section>
           <h2>Our Story</h2>
           <p>
-            Delicious Bites was founded with a simple mission: to make cooking accessible and enjoyable for everyone. 
-            We believe that great food doesn't have to be complicated or require fancy ingredients. Instead, it's about 
-            passion, simplicity, and sharing delicious moments with loved ones.
+            B.O.R.G. Night started as "Burger Night"—a simple tradition among a group of friends who met every week at their favorite burger joint. 
+            What began as a casual meetup at the same spot became a cherished ritual—a time to reconnect, laugh, and enjoy good food together.
+          </p>
+          <p>
+            After 7 years of burgers and friendship, the group decided to evolve the tradition. Instead of going to the same place, 
+            they began exploring the world through food. Each week, they randomly select a country and cook a traditional dish from that nation's cuisine. 
+            As the tradition expanded, "Burger Night" evolved into "Borger Night," and eventually became what it is today: B.O.R.G. Night—"Bites Of Random Geography"—a celebration 
+            of global flavors, cultural discovery, and the bonds that food creates.
+          </p>
+          <p>
+            Now, we're sharing these culinary adventures with you. Every recipe on this blog represents a journey to a new country and culture, 
+            one delicious dish at a time.
           </p>
         </section>
 
         <section>
           <h2>What We Do</h2>
           <p>
-            We curate and share authentic, tested recipes from our community of food lovers around the world. Every recipe 
-            has been carefully selected and tested to ensure it's not only delicious but also practical for home cooks of 
-            all skill levels.
+            Each week, we randomly select a country and cook a traditional dish from that nation's cuisine. We document these culinary adventures 
+            and share the recipes here so you can explore the world through food alongside us. Our goal is to inspire you to step outside your 
+            comfort zone, discover new flavors, and create meaningful memories around the dinner table—just like we do at B.O.R.G. Night.
           </p>
         </section>
 
@@ -38,18 +47,7 @@ function About() {
             <li>
               <strong>Community</strong> - Food brings people together. We love hearing from our readers!
             </li>
-            <li>
-              <strong>Sustainability</strong> - We promote cooking with whole foods and minimal waste.
-            </li>
           </ul>
-        </section>
-
-        <section>
-          <h2>The Team</h2>
-          <p>
-            Delicious Bites is run by food enthusiasts who are passionate about sharing their favorite recipes and 
-            culinary discoveries. We're always looking for new recipes to feature and would love to hear your favorites!
-          </p>
         </section>
 
         <section className="contact-section">

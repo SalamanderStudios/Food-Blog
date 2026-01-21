@@ -24,9 +24,9 @@ function App() {
         <nav className="navbar">
           <div className="logo-section">
             <h1 onClick={() => navigateTo('home')} className="logo">
-              🍽️ Delicious Bites
+              🍽️ B.O.R.G. Night
             </h1>
-            <p className="tagline">Homemade recipes, made simple</p>
+            <p className="tagline">Bites Of Random Geography</p>
           </div>
           <ul className="nav-links">
             <li>
@@ -67,7 +67,7 @@ function App() {
 
       <footer className="footer">
         <div className="footer-content">
-          <p>&copy; 2025 Delicious Bites. All rights reserved.</p>
+          <p>&copy; 2025 B.O.R.G. Night. All rights reserved.</p>
           <div className="social-links">
             <a href="#" title="Facebook">f</a>
             <a href="#" title="Instagram">📷</a>

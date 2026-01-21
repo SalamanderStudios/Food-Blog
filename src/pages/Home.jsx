@@ -6,8 +6,8 @@ function Home({ onRecipeClick }) {
     <div className="home">
       <section className="hero">
         <div className="hero-content">
-          <h2>Welcome to Delicious Bites</h2>
-          <p>Discover easy and delicious recipes from around the world</p>
+          <h2>Welcome to B.O.R.G. Night</h2>
+          <p>Discover the recipes made on B.O.R.G Night</p>
         </div>
       </section>
 
@@ -32,8 +32,9 @@ function Home({ onRecipeClick }) {
                 <h3>{recipe.title}</h3>
                 <p className="recipe-author">By {recipe.author}</p>
                 <div className="recipe-meta">
-                  <span className="difficulty">{recipe.difficulty}</span>
-                  <span className="cook-time">⏱️ {recipe.prepTime}</span>
+                  <span className={`difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
+                  <span className="tag region">{recipe.region}</span>
+                  <span className="rating">⭐ {recipe.rating}/5</span>
                 </div>
                 <p className="recipe-description">{recipe.description}</p>
               </div>

@@ -1,12 +1,46 @@
 import { recipes } from '../data/recipes'
+import { useState, useEffect, useRef } from 'react'
+import { saveRating, getRatings } from '../utils/ratingService'
 import '../styles/pages.css'
 
 function RecipeDetail({ recipeId, onBack }) {
   const recipe = recipes.find(r => r.id === recipeId)
+  const [userRating, setUserRating] = useState(0)
+  const [hasRated, setHasRated] = useState(false)
+  const [allRatings, setAllRatings] = useState([])
+  const [loading, setLoading] = useState(true)
+  const unsubscribeRef = useRef(null)
 
   if (!recipe) {
     return <div className="recipe-detail">Recipe not found</div>
   }
+
+  // Fetch ratings from Firebase on component mount and set up real-time listener
+  useEffect(() => {
+    setLoading(true)
+    unsubscribeRef.current = getRatings(recipe.id, (ratings) => {
+      setAllRatings(ratings)
+      setLoading(false)
+    })
+
+    // Cleanup listener on unmount
+    return () => {
+      if (unsubscribeRef.current) {
+        unsubscribeRef.current()
+      }
+    }
+  }, [recipe.id])
+
+  const handleStarClick = async (rating) => {
+    setUserRating(rating)
+    setHasRated(true)
+    // Save to Firebase - the real-time listener will automatically update
+    await saveRating(recipe.id, rating)
+  }
+
+  const averageRating = allRatings.length > 0 
+    ? (allRatings.reduce((sum, r) => sum + r, 0) / allRatings.length).toFixed(1)
+    : 'No ratings yet'
 
   return (
     <div className="recipe-detail">
@@ -17,11 +51,15 @@ function RecipeDetail({ recipeId, onBack }) {
           <div className="recipe-title-section">
             <h1>{recipe.title}</h1>
             <p className="recipe-meta-info">
-              By <strong>{recipe.author}</strong> | {new Date(recipe.date).toLocaleDateString()}
+              By <strong>{recipe.author}</strong> | {new Date(recipe.date + 'T00:00:00').toLocaleDateString()}
+            </p>
+            <p className="recipe-country">
+              <strong>Country:</strong> {recipe.country}
             </p>
             <div className="recipe-tags">
               <span className="tag category">{recipe.category}</span>
-              <span className="tag difficulty">{recipe.difficulty}</span>
+              <span className={`tag difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
+              <span className="tag region">{recipe.region}</span>
             </div>
           </div>
         </header>
@@ -42,8 +80,35 @@ function RecipeDetail({ recipeId, onBack }) {
             <p>{recipe.cookTime}</p>
           </div>
           <div className="info-box">
+            <h3>Total Time</h3>
+            <p>{recipe.totalTime}</p>
+          </div>
+          <div className="info-box">
             <h3>Servings</h3>
             <p>{recipe.servings}</p>
+          </div>
+          <div className="info-box">
+            <h3>B.O.R.G. Rating</h3>
+            <p>⭐ {recipe.rating}/5</p>
+          </div>
+          <div className="info-box">
+            <h3>Reader's Rating</h3>
+            <p>{typeof averageRating === 'number' ? `⭐ ${averageRating}/5` : averageRating}</p>
+          </div>
+          <div className="info-box rating-box">
+            <h3>Your Rating</h3>
+            <div className="user-rating">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={`rating-star ${star <= userRating ? 'filled' : ''}`}
+                  onClick={() => handleStarClick(star)}
+                >
+                  ⭐
+                </span>
+              ))}
+            </div>
+            {hasRated && <p className="rating-feedback">Thanks for rating!</p>}
           </div>
         </div>
 
@@ -56,10 +121,16 @@ function RecipeDetail({ recipeId, onBack }) {
           <h2>Ingredients</h2>
           <ul>
             {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>
-                <input type="checkbox" id={`ingredient-${index}`} />
-                <label htmlFor={`ingredient-${index}`}>{ingredient}</label>
-              </li>
+              ingredient.header ? (
+                <li key={index} className="ingredient-header">
+                  <strong>{ingredient.header}</strong>
+                </li>
+              ) : (
+                <li key={index}>
+                  <input type="checkbox" id={`ingredient-${index}`} />
+                  <label htmlFor={`ingredient-${index}`}>{ingredient}</label>
+                </li>
+              )
             ))}
           </ul>
         </section>
@@ -68,7 +139,15 @@ function RecipeDetail({ recipeId, onBack }) {
           <h2>Instructions</h2>
           <ol>
             {recipe.instructions.map((instruction, index) => (
-              <li key={index}>{instruction}</li>
+              instruction.header ? (
+                <li key={index} className="instruction-header">
+                  <strong>{instruction.header}</strong>
+                </li>
+              ) : instruction === "" ? (
+                <li key={index} style={{ listStyle: 'none', padding: '10px 0' }}></li>
+              ) : (
+                <li key={index}>{instruction}</li>
+              )
             ))}
           </ol>
         </section>
