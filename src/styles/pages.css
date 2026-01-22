@@ -621,17 +621,35 @@ body {
   padding: 12px 0;
 }
 
+.instructions-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .instruction-header {
-  list-style: none !important;
-  padding: 20px 0 12px 0 !important;
-  margin-top: 20px !important;
-  margin-bottom: 0 !important;
+  padding: 20px 0 12px 12px;
+  margin-top: 20px;
+  margin-bottom: 0;
   background: var(--light-color);
-  padding-left: 12px !important;
   border-left: 4px solid var(--primary-color);
   font-weight: 600;
   color: var(--primary-color);
   font-size: 1.05rem;
+}
+
+.instruction-step {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.instruction-step strong {
+  color: var(--primary-color);
+  min-width: 30px;
+}
+
+.instruction-step span {
+  line-height: 1.6;
 }
 
 .tips {

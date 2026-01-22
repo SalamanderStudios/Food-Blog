@@ -140,19 +140,20 @@ function RecipeDetail({ recipeId, onBack }) {
 
         <section className="recipe-section instructions">
           <h2>Instructions</h2>
-          <ol>
+          <div className="instructions-content">
             {recipe.instructions.map((instruction, index) => (
               instruction.header ? (
-                <li key={index} className="instruction-header">
-                  <strong>{instruction.header}</strong>
-                </li>
+                <h3 key={index} className="instruction-header">{instruction.header}</h3>
               ) : instruction === "" ? (
-                <li key={index} style={{ listStyle: 'none', padding: '10px 0' }}></li>
+                <div key={index} style={{ height: '10px' }}></div>
               ) : (
-                <li key={index}>{instruction}</li>
+                <div key={index} className="instruction-step">
+                  <strong>{recipe.instructions.slice(0, index).filter(i => i !== "" && !i.header).length + 1}.</strong>
+                  <span>{instruction}</span>
+                </div>
               )
             ))}
-          </ol>
+          </div>
         </section>
 
         <section className="recipe-section tips">
