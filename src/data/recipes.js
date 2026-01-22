@@ -158,7 +158,7 @@ export const recipes = [
       "Mix gently with your hands until just combined; avoid overmixing.",
       "Divide mixture into 12-16 portions and shape each into a small sausage about 3-4 inches long.",
       "Preheat grill to medium-high heat or heat a cast iron skillet over medium-high heat.",
-      "Grill or pan-sear ćevapčići for 3-4 minutes per side until cooked through and lightly charred.",
+      "Grill or pan-sear ćevapčići for 3-4 minutes per side until cooked through and lightly charred.(may take longer depending on grill)",
       "Serve hot in pita bread or lepinja with ajvar and with optional onions and sour cream."
     ]
   },
