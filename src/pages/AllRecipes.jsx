@@ -16,6 +16,7 @@ function AllRecipes({ onRecipeClick }) {
     Soups: true
   })
   const [showVegetarianOnly, setShowVegetarianOnly] = useState(false)
+  const [showBorgNightOnly, setShowBorgNightOnly] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
   const handleDifficultyChange = (difficulty) => {
@@ -56,6 +57,11 @@ function AllRecipes({ onRecipeClick }) {
     // Apply vegetarian filter
     if (showVegetarianOnly) {
       filtered = filtered.filter(recipe => recipe.vegetarian)
+    }
+
+    // Apply B.O.R.G. Night filter
+    if (showBorgNightOnly) {
+      filtered = filtered.filter(recipe => recipe.borgNight)
     }
 
     // Apply search filter
@@ -151,7 +157,15 @@ function AllRecipes({ onRecipeClick }) {
                     checked={showVegetarianOnly}
                     onChange={() => setShowVegetarianOnly(!showVegetarianOnly)}
                   />
-                  <span>🌱 Vegetarian</span>
+                  <span>Vegetarian</span>
+                </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={showBorgNightOnly}
+                    onChange={() => setShowBorgNightOnly(!showBorgNightOnly)}
+                  />
+                  <span>B.O.R.G. Night</span>
                 </label>
               </div>
             </div>

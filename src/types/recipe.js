@@ -24,6 +24,7 @@
  * @property {string|number} servings - Number of servings or portion description
  * @property {string} difficulty - Recipe difficulty (Easy, Medium, Hard)
  * @property {boolean} vegetarian - Whether recipe is vegetarian
+ * @property {boolean} borgNight - Whether this recipe was made for a B.O.R.G. Night event
  * @property {string} description - Recipe description
  * @property {(RecipeIngredient|string)[]} ingredients - Array of ingredients (strings or header objects)
  * @property {(RecipeInstruction|string)[]} instructions - Array of instructions (strings or header objects)

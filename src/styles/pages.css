@@ -450,6 +450,11 @@ body {
   color: var(--dark-color);
 }
 
+.tag.borgnight {
+  background: #ff6b35;
+  color: white;
+}
+
 .tag.difficulty {
   color: white;
   font-weight: 600;

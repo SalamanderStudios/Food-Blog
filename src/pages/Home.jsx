@@ -2,12 +2,15 @@ import { recipes } from '../data/recipes'
 import '../styles/pages.css'
 
 function Home({ onRecipeClick }) {
+  // Filter for B.O.R.G. Night recipes only
+  const borgRecipes = recipes.filter(recipe => recipe.borgNight === true)
+  
   // Sort recipes by date (most recent first) and take the 6 most recent
-  const recentRecipes = [...recipes]
+  const recentRecipes = [...borgRecipes]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 6)
 
-  // Sort recipes by B.O.R.G. rating (highest first) and take top 6
+  // Sort recipes by B.O.R.G. rating (highest first) and take top 6 from ALL recipes
   const favoriteRecipes = [...recipes]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 6)
@@ -22,7 +25,7 @@ function Home({ onRecipeClick }) {
       </section>
 
       <section className="featured-recipes">
-        <h2>Recent Recipes</h2>
+        <h2>Recent B.O.R.G. Recipes</h2>
         <div className="recipe-grid">
           {recentRecipes.map((recipe) => (
             <div 

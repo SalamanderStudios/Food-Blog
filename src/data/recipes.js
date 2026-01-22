@@ -1,13 +1,9 @@
 // Sample recipes data for the food blog
 import { calculateTotalTime } from '../utils/recipeHelpers.js'
-import JakesBruschettaImage from '../assets/JakesBruschetta.jpg'
-import BreadCheeseSaladImage from '../assets/BreadCheeseSalad.jpg'
-import CevapciciImage from '../assets/cevapcici.jpg'
-import ButterPaneerImage from '../assets/ButterPaneer.jpg'
-import MatzahBallSoupImage from '../assets/motzahballsoup.jpg'
-import FeijoadaImage from '../assets/Feijoada.jpg'
-import NaanKottuImage from '../assets/KottuRita.jpg'
-import SpanishSingularBurgerImage from '../assets/SpanishSingularBurger.jpg'
+
+// Dynamically import all images from assets folder
+const imageModules = import.meta.glob('../assets/*.jpg', { eager: true })
+const getImage = (filename) => imageModules[`../assets/${filename}`].default
 
 export const recipes = [
   {
@@ -18,13 +14,14 @@ export const recipes = [
     region: "Europe",
     date: "2026-01-20",
     category: "Appetizers",
-    image: JakesBruschettaImage,
+    image: getImage('JakesBruschetta.jpg'),
     rating: 5,
     prepTime: "15 minutes",
     cookTime: "12 minutes",
     servings: "12 pieces",
     difficulty: "Easy",
     vegetarian: true,
+    borgNight: true,
     description: "Delicious and easy-to-make bruschetta with fresh tomatoes, mozzarella, hot honey, basil, and garlic on toasted bread.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -67,13 +64,14 @@ export const recipes = [
     region: "Europe",
     date: "2026-01-06",
     category: "Salads",
-    image: BreadCheeseSaladImage,
+    image: getImage('BreadCheeseSalad.jpg'),
     rating: 4.5,
     prepTime: "10 minutes",
     cookTime: "8 minutes",
     servings: 4,
     difficulty: "Easy",
     vegetarian: true,
+    borgNight: true,
     description: "A refreshing garden salad with crisp vegetables, bread cheese, and a homemade lemon oil dressing.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -112,13 +110,14 @@ export const recipes = [
     region: "Europe",
     date: "2026-01-13",
     category: "Main Courses",
-    image: CevapciciImage,
+    image: getImage('cevapcici.jpg'),
     rating: 4,
     prepTime: "20 minutes",
     cookTime: "12 minutes",
     servings: 4,
     difficulty: "Medium",
     vegetarian: false,
+    borgNight: true,
     description: "Ćevapčići are delicious grilled sausages made from a blend of ground pork, beef, and lamb. This authentic Serbian preparation is perfect served in a warm sandwich, preferably using Lepinja.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -170,13 +169,14 @@ export const recipes = [
     region: "Middle East",
     date: "2025-12-23",
     category: "Main Courses",
-    image: ButterPaneerImage,
+    image: getImage('ButterPaneer.jpg'),
     rating: 3.5,
     prepTime: "20 minutes",
     cookTime: "25 minutes",
     servings: 4,
     difficulty: "Medium",
     vegetarian: true,
+    borgNight: true,
     description: "A creamy and aromatic Pakistani curry featuring paneer cheese in a rich tomato-based sauce with warm spices.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -226,13 +226,14 @@ export const recipes = [
     region: "Middle East",
     date: "2025-11-25",
     category: "Soups",
-    image: MatzahBallSoupImage,
+    image: getImage('motzahballsoup.jpg'),
     rating: 4.5,
     prepTime: "45 minutes",
     cookTime: "60 minutes",
     servings: 8,
     difficulty: "Medium",
     vegetarian: false,
+    borgNight: true,
     description: "Classic Jewish matzah ball soup with homemade matzah meal, tender chicken, and fresh vegetables in a rich, flavorful broth. Recipe inspired by Joshua Weissman.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -304,13 +305,14 @@ export const recipes = [
     region: "South America",
     date: "2025-12",
     category: "Main Courses",
-    image: FeijoadaImage,
+    image: getImage('Feijoada.jpg'),
     rating: 4,
     prepTime: "15 minutes",
     cookTime: "240 minutes",
     servings: 6,
     difficulty: "Hard",
     vegetarian: false,
+    borgNight: true,
     description: "Brazil's national dish - a hearty, flavorful stew of black beans and various pork cuts simmered for hours until creamy and rich.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -351,13 +353,14 @@ export const recipes = [
     region: "Asia",
     date: "2025-11-18",
     category: "Main Courses",
-    image: NaanKottuImage,
+    image: getImage('KottuRita.jpg'),
     rating: 4.5,
     prepTime: "20 minutes",
     cookTime: "20 minutes",
     servings: 4,
     difficulty: "Medium",
     vegetarian: false,
+    borgNight: true,
     description: "A vibrant Sri Lankan street food dish with chopped naan bread, vegetables, eggs, and chicken tossed together on a hot griddle with aromatic spices and savory sauce.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -428,13 +431,14 @@ export const recipes = [
     region: "Europe",
     date: "2025-12-02",
     category: "Main Courses",
-    image: SpanishSingularBurgerImage,
+    image: getImage('SpanishSingularBurger.jpg'),
     rating: 4,
     prepTime: "15 minutes",
     cookTime: "35 minutes",
     servings: 5,
     difficulty: "Medium",
     vegetarian: false,
+    borgNight: true,
     description: "An elevated Spanish burger featuring dry-aged beef, melted Camembert and sharp cheddar, crispy bacon, and golden caramelized onions on a buttered brioche bun.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
@@ -485,6 +489,91 @@ export const recipes = [
       "On bottom bun: Camembert, cheddar-topped patty, 2 strips bacon, caramelized onions.",
       "On top bun: BBQ sauce.",
       "Close and serve immediately."
+    ]
+},
+  {
+    id: 9,
+    title: "Josh's Spinach and Artichoke Dip",
+    author: "Josh W.",
+    country: "USA",
+    region: "North America",
+    date: "2025-12-05",
+    category: "Appetizers",
+    image: getImage('SpinachArtichokeDip.jpg'),
+    rating: 4.5,
+    prepTime: "20 minutes",
+    cookTime: "25 minutes",
+    servings: 6,
+    difficulty: "Easy",
+    vegetarian: true,
+    borgNight: false,
+    description: "A creamy and delicious spinach and artichoke dip loaded with fresh spinach, tender artichoke hearts, and a blend of melted cheeses. Perfect for entertaining or as a savory appetizer.",
+    ingredients: [
+      "2 tbsp unsalted butter",
+      "4 cloves garlic, finely chopped",
+      "4 cups spinach leaves",
+      "1/2 cup cream cheese, softened",
+      "1/2 cup crème fraîche",
+      "1/4 cup freshly grated Parmigiano Reggiano",
+      "Kosher salt and pepper, to taste",
+      "1 cup roughly chopped, cooked artichoke hearts",
+      "Cooking spray",
+      "1/3 cup grated mozzarella cheese",
+      "1/3 cup Monterey jack cheese",
+      "Chips, to serve (optional)"
+    ],
+    instructions: [
+      "Preheat oven to 375°F / 190°C.",
+      "In a medium sauté pan set over medium heat, melt the butter. Once melted, add garlic and sauté until fragrant. Add spinach and cook, stirring often, until wilted. Remove from the pan and drain through a fine mesh strainer, pushing on the spinach to remove as much excess liquid as possible. Remove from the strainer and finely chop the spinach.",
+      "In a medium bowl, whisk together the cream cheese and crème fraîche until combined. Add the parmesan and salt and pepper to taste.",
+      "Fold in the artichoke hearts and chopped spinach until combined.",
+      "Grease a 3-quart baking dish with cooking spray and spread the mixture evenly in the dish.",
+      "In a separate bowl, mix together the mozzarella and Monterey jack cheese. Sprinkle the cheese on top of the dip. Bake for 20 minutes or until the dip is bubbling, the cheese is melted and the top is golden brown. Serve as a side dish or with chips."
+    ]
+  },
+  {
+    id: 10,
+    title: "John's Pork Al Latte",
+    author: "Chef John",
+    country: "Italy",
+    region: "Europe",
+    date: "2025-12-05",
+    category: "Main Courses",
+    image: getImage('porkAlLatte.jpg'),
+    rating: 4.5,
+    prepTime: "20 minutes",
+    cookTime: "50 minutes",
+    servings: 4,
+    difficulty: "Medium",
+    vegetarian: false,
+    borgNight: false,
+    description: "A classic Italian braised pork dish where pork shoulder is slowly cooked in a creamy sauce with bacon, sage, and crème fraîche, creating a rich and comforting meal.",
+    get totalTime() {
+      return calculateTotalTime(this.prepTime, this.cookTime);
+    },
+    ingredients: [
+      "1.5 lbs pork shoulder, cut into 2-inch cubes",
+      "1 tbsp olive oil",
+      "2 strips bacon",
+      "1 small yellow onion, diced",
+      "4 cloves garlic, sliced",
+      "1.25 cups chicken broth",
+      "0.5 cup crème fraîche",
+      "2 tbsp fresh chopped sage leaves, plus more for frying",
+      "Salt and pepper, to taste",
+      "Red chili flakes, to taste"
+    ],
+    instructions: [
+      "Brown bacon on medium heat in dutch oven until crispy. Remove bacon and set aside.",
+      "Cut pork shoulder into evenly sized pieces, about 1.5x1.5 inches.",
+      "Brown pork chunks in the bacon fat until golden on all sides. Remove pork and set aside.",
+      "Add diced onion with a pinch of salt to the dutch oven and cook until golden and translucent, about 5 minutes.",
+      "Add sliced garlic and cook until fragrant, about 1-2 minutes.",
+      "Add chicken broth and crème fraîche to the dutch oven, stirring well to combine. Raise heat to high.",
+      "Return bacon and chopped sage. Once simmering, add pork and any juices to the dutch oven. Season with salt, pepper, and red chili flakes to taste.",
+      "Reduce heat to medium-low and simmer for 40 minutes until pork is tender and sauce has reduced.",
+      "Raise heat to medium-high and cook until sauce is thickened. Likely around 15-20 minutes stirring occasionally.",
+      "Taste and adjust seasonings as needed. Serve hot on polenta or mashed potatoes with fresh sage as garnish."
     ]
   }
 ];
