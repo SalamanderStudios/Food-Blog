@@ -1,6 +1,7 @@
 import { recipes } from '../data/recipes'
 import { useState, useEffect, useRef } from 'react'
 import { saveRating, getRatings } from '../utils/ratingService'
+import { getDeviceId, hasDeviceRated, markDeviceRated, getDeviceRating, getDeviceRatingEntryKey } from '../utils/deviceId'
 import '../styles/pages.css'
 
 function RecipeDetail({ recipeId, onBack }) {
@@ -20,12 +21,23 @@ function RecipeDetail({ recipeId, onBack }) {
   useEffect(() => {
     setLoading(true)
     
-    // Check if user has already rated this recipe on this device
-    const hasAlreadyRated = localStorage.getItem(`rated_recipe_${recipe.id}`)
-    if (hasAlreadyRated) {
-      setHasRated(true)
-      setUserRating(parseInt(hasAlreadyRated))
+    // Check if this device has already rated this recipe using fingerprint
+    const checkDeviceRating = async () => {
+      try {
+        const alreadyRated = await hasDeviceRated(recipe.id)
+        if (alreadyRated) {
+          const storedRating = getDeviceRating(recipe.id)
+          if (storedRating) {
+            setHasRated(true)
+            setUserRating(storedRating)
+          }
+        }
+      } catch (error) {
+        console.error('Error checking device rating:', error)
+      }
     }
+    
+    checkDeviceRating()
     
     unsubscribeRef.current = getRatings(recipe.id, (ratings) => {
       setAllRatings(ratings)
@@ -43,18 +55,23 @@ function RecipeDetail({ recipeId, onBack }) {
   const handleStarClick = async (rating) => {
     // Check if they've already rated
     if (hasRated) {
-      alert('You have already rated this recipe from this device!')
-      return
+      // Allow update to a different rating
+      const confirmUpdate = window.confirm('Update your rating for this recipe?')
+      if (!confirmUpdate) return
     }
     
     setUserRating(rating)
     setHasRated(true)
     
-    // Store rating in localStorage so they can't rate again on this device
-    localStorage.setItem(`rated_recipe_${recipe.id}`, rating)
+    // Get the existing entry key if they've already rated (for updates)
+    const existingEntryKey = hasRated ? getDeviceRatingEntryKey(recipe.id) : null
     
-    // Save to Firebase - the real-time listener will automatically update
-    await saveRating(recipe.id, rating)
+    // Save to Firebase (either new entry or update existing)
+    const entryKey = await saveRating(recipe.id, rating, existingEntryKey)
+    
+    // Mark this device as having rated using device fingerprint
+    // Use existing key if updating, otherwise use the returned key from new rating
+    await markDeviceRated(recipe.id, rating, existingEntryKey || entryKey)
   }
 
   const averageRating = allRatings.length > 0 

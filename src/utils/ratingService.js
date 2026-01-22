@@ -1,15 +1,28 @@
 import { database } from '../config/firebase'
-import { ref, push, onValue, query, orderByChild } from 'firebase/database'
+import { ref, push, set, onValue, query, orderByChild } from 'firebase/database'
 
-export const saveRating = async (recipeId, rating) => {
+export const saveRating = async (recipeId, rating, entryKey = null) => {
   try {
-    console.log('Saving rating:', recipeId, rating)
+    console.log('Saving rating:', recipeId, rating, 'entryKey:', entryKey)
     const ratingsRef = ref(database, `ratings/recipe_${recipeId}`)
-    await push(ratingsRef, {
-      rating,
-      timestamp: new Date().toISOString()
-    })
-    console.log('Rating saved successfully')
+    
+    if (entryKey) {
+      // Update existing rating entry to preserve the database average
+      const existingEntryRef = ref(database, `ratings/recipe_${recipeId}/${entryKey}`)
+      await set(existingEntryRef, {
+        rating,
+        timestamp: new Date().toISOString()
+      })
+      console.log('Rating updated successfully')
+    } else {
+      // Create new rating entry (first time rating)
+      const newEntryRef = await push(ratingsRef, {
+        rating,
+        timestamp: new Date().toISOString()
+      })
+      console.log('Rating saved successfully with key:', newEntryRef.key)
+      return newEntryRef.key
+    }
     return true
   } catch (error) {
     console.error('Error saving rating:', error)

@@ -17,7 +17,7 @@ function Home({ onRecipeClick }) {
       <section className="hero">
         <div className="hero-content">
           <h2>Welcome to B.O.R.G. Night</h2>
-          <p>Discover the recipes made on B.O.R.G Night</p>
+          <p>Discover the recipes made on B.O.R.G. Night</p>
         </div>
       </section>
 
