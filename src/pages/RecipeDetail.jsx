@@ -60,6 +60,9 @@ function RecipeDetail({ recipeId, onBack }) {
               <span className="tag category">{recipe.category}</span>
               <span className={`tag difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
               <span className="tag region">{recipe.region}</span>
+              <span className={`tag vegetarian ${recipe.vegetarian ? 'vegetarian-yes' : 'vegetarian-no'}`}>
+                {recipe.vegetarian ? '🌱 Vegetarian' : 'Contains Meat'}
+              </span>
             </div>
           </div>
         </header>

@@ -2,6 +2,16 @@ import { recipes } from '../data/recipes'
 import '../styles/pages.css'
 
 function Home({ onRecipeClick }) {
+  // Sort recipes by date (most recent first) and take the 6 most recent
+  const recentRecipes = [...recipes]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 6)
+
+  // Sort recipes by B.O.R.G. rating (highest first) and take top 6
+  const favoriteRecipes = [...recipes]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 6)
+
   return (
     <div className="home">
       <section className="hero">
@@ -12,9 +22,9 @@ function Home({ onRecipeClick }) {
       </section>
 
       <section className="featured-recipes">
-        <h2>Featured Recipes</h2>
+        <h2>Recent Recipes</h2>
         <div className="recipe-grid">
-          {recipes.map((recipe) => (
+          {recentRecipes.map((recipe) => (
             <div 
               key={recipe.id} 
               className="recipe-card"
@@ -43,17 +53,36 @@ function Home({ onRecipeClick }) {
         </div>
       </section>
 
-      <section className="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <p>Get weekly recipes delivered to your inbox</p>
-        <form className="newsletter-form">
-          <input 
-            type="email" 
-            placeholder="Enter your email"
-            required
-          />
-          <button type="submit">Subscribe</button>
-        </form>
+      <section className="featured-recipes">
+        <h2>Favorite Recipes</h2>
+        <div className="recipe-grid">
+          {favoriteRecipes.map((recipe) => (
+            <div 
+              key={recipe.id} 
+              className="recipe-card"
+              onClick={() => onRecipeClick(recipe.id)}
+            >
+              <div className="recipe-image-container">
+                <img 
+                  src={recipe.image} 
+                  alt={recipe.title}
+                  className="recipe-image"
+                />
+                <span className="recipe-badge">{recipe.category}</span>
+              </div>
+              <div className="recipe-info">
+                <h3>{recipe.title}</h3>
+                <p className="recipe-author">By {recipe.author}</p>
+                <div className="recipe-meta">
+                  <span className={`difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
+                  <span className="tag region">{recipe.region}</span>
+                  <span className="rating">⭐ {recipe.rating}/5</span>
+                </div>
+                <p className="recipe-description">{recipe.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   )

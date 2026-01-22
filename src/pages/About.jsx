@@ -50,13 +50,34 @@ function About() {
           </ul>
         </section>
 
+        <section>
+          <h2>How We Rate</h2>
+          <p>
+            In our group of half a dozen friends, we each rate every recipe on a scale of 1-5. Here's what our ratings mean:
+          </p>
+          <ul className="values-list">
+            <li>
+              <strong>3 out of 5</strong> - A good meal. We enjoyed it and would make it again.
+            </li>
+            <li>
+              <strong>4 out of 5</strong> - A great meal. This one really impressed us and we'll definitely come back to it.
+            </li>
+            <li>
+              <strong>5 out of 5</strong> - One of our favorite meals we have made. This is a keeper that stands out among all our B.O.R.G. Night adventures.
+            </li>
+          </ul>
+          <p>
+            The B.O.R.G. Rating you see on each recipe is our group's consensus rating. Your Reader's Rating helps us know what resonates with our audience!
+          </p>
+        </section>
+
         <section className="contact-section">
           <h2>Get In Touch</h2>
           <p>
             Have a recipe to share? Want to collaborate? We'd love to hear from you!
           </p>
           <p>
-            Email us at: <a href="mailto:hello@deliciousbites.com">hello@deliciousbites.com</a>
+            Email us at: <a href="mailto:jtsalamander7@gmail.com">jtsalamander7@gmail.com</a>
           </p>
         </section>
       </article>

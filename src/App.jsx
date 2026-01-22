@@ -5,6 +5,7 @@ import './App.css'
 import Home from './pages/Home'
 import RecipeDetail from './pages/RecipeDetail'
 import About from './pages/About'
+import AllRecipes from './pages/AllRecipes'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -39,17 +40,18 @@ function App() {
             </li>
             <li>
               <button 
-                className={`nav-button ${currentPage === 'about' ? 'active' : ''}`}
-                onClick={() => navigateTo('about')}
+                className={`nav-button ${currentPage === 'all-recipes' ? 'active' : ''}`}
+                onClick={() => navigateTo('all-recipes')}
               >
-                About
+                Recipes
               </button>
             </li>
             <li>
               <button 
-                className={`nav-button ${currentPage === 'contact' ? 'active' : ''}`}
+                className={`nav-button ${currentPage === 'about' ? 'active' : ''}`}
+                onClick={() => navigateTo('about')}
               >
-                Contact
+                About
               </button>
             </li>
           </ul>
@@ -61,6 +63,10 @@ function App() {
           setSelectedRecipeId(id)
           navigateTo('recipe', id)
         }} />}
+        {currentPage === 'all-recipes' && <AllRecipes onRecipeClick={(id) => {
+          setSelectedRecipeId(id)
+          navigateTo('recipe', id)
+        }} />}
         {currentPage === 'recipe' && <RecipeDetail recipeId={selectedRecipeId} onBack={() => navigateTo('home')} />}
         {currentPage === 'about' && <About />}
       </main>
@@ -68,11 +74,6 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <p>&copy; 2025 B.O.R.G. Night. All rights reserved.</p>
-          <div className="social-links">
-            <a href="#" title="Facebook">f</a>
-            <a href="#" title="Instagram">📷</a>
-            <a href="#" title="Twitter">𝕏</a>
-          </div>
         </div>
       </footer>
     </div>
