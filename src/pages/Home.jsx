@@ -15,6 +15,9 @@ function Home({ onRecipeClick }) {
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 6)
 
+  // Get a random recipe from all recipes
+  const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)]
+
   return (
     <div className="home">
       <section className="hero">
@@ -86,6 +89,15 @@ function Home({ onRecipeClick }) {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="random-recipe-section">
+        <button 
+          className="random-recipe-button"
+          onClick={() => onRecipeClick(randomRecipe.id)}
+        >
+          Try a Random Recipe
+        </button>
       </section>
     </div>
   )
