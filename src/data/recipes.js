@@ -56,7 +56,7 @@ export const recipes = [
       { header: "Make the Bruschetta Toasts:" },
       "Preheat oven to 400˚F with a rack in the center of the oven. Place toasts on a parchment-lined baking sheet. Cut toasts into 1/2\" thick slices, slicing diagonally.",
       "Arrange toasts on the prepared baking sheet and brush the garlic infused olive oil on both sides of toasts. Sprinkle tops with parmesan cheese and bake at 400˚F for 7 minutes or until the edges are golden brown.",
-      "To Serve: Arrange the toasts on a platter and the tomato topping in a separate bowl. Drizzle hot honey on top of the toast, then layer on slice of mozzarella. Spoon the tomato mixture over the toasts and serve with a drizzle of extra virgin olive oil and balsamic glaze."
+      "To Serve: Arrange the toasts on a platter and the tomato topping in a separate bowl. Drizzle hot honey on top of the toast, then layer on slice of mozzarella. Spoon the tomato mixture over the toasts, and sprinkle on any extra basil/parsley. Serve with a drizzle of extra virgin olive oil and balsamic glaze."
     ]
   },
   {
@@ -119,7 +119,7 @@ export const recipes = [
     servings: 4,
     difficulty: "Medium",
     vegetarian: false,
-    description: "Ćevapčići are delicious grilled sausages made from a blend of ground pork, beef, and lamb. This authentic Serbian preparation is perfect served in a warm sandwich.",
+    description: "Ćevapčići are delicious grilled sausages made from a blend of ground pork, beef, and lamb. This authentic Serbian preparation is perfect served in a warm sandwich, preferably using Lepinja.",
     get totalTime() {
       return calculateTotalTime(this.prepTime, this.cookTime);
     },

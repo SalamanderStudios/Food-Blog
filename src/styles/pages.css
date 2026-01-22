@@ -537,8 +537,27 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.rating-star:hover,
+.rating-star:hover {
+  opacity: 1;
+}
+
 .rating-star.filled {
+  opacity: 1;
+}
+
+.rating-star.disabled {
+  cursor: not-allowed;
+}
+
+.rating-star.disabled:hover {
+  opacity: 0.4;
+}
+
+.rating-star.disabled.filled {
+  opacity: 1;
+}
+
+.rating-star.disabled.filled:hover {
   opacity: 1;
 }
 

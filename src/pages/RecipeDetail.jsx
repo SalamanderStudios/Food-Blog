@@ -9,6 +9,7 @@ function RecipeDetail({ recipeId, onBack }) {
   const [hasRated, setHasRated] = useState(false)
   const [allRatings, setAllRatings] = useState([])
   const [loading, setLoading] = useState(true)
+  const [hoveredStar, setHoveredStar] = useState(0)
   const unsubscribeRef = useRef(null)
 
   if (!recipe) {
@@ -18,6 +19,14 @@ function RecipeDetail({ recipeId, onBack }) {
   // Fetch ratings from Firebase on component mount and set up real-time listener
   useEffect(() => {
     setLoading(true)
+    
+    // Check if user has already rated this recipe on this device
+    const hasAlreadyRated = localStorage.getItem(`rated_recipe_${recipe.id}`)
+    if (hasAlreadyRated) {
+      setHasRated(true)
+      setUserRating(parseInt(hasAlreadyRated))
+    }
+    
     unsubscribeRef.current = getRatings(recipe.id, (ratings) => {
       setAllRatings(ratings)
       setLoading(false)
@@ -32,8 +41,18 @@ function RecipeDetail({ recipeId, onBack }) {
   }, [recipe.id])
 
   const handleStarClick = async (rating) => {
+    // Check if they've already rated
+    if (hasRated) {
+      alert('You have already rated this recipe from this device!')
+      return
+    }
+    
     setUserRating(rating)
     setHasRated(true)
+    
+    // Store rating in localStorage so they can't rate again on this device
+    localStorage.setItem(`rated_recipe_${recipe.id}`, rating)
+    
     // Save to Firebase - the real-time listener will automatically update
     await saveRating(recipe.id, rating)
   }
@@ -104,14 +123,16 @@ function RecipeDetail({ recipeId, onBack }) {
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
-                  className={`rating-star ${star <= userRating ? 'filled' : ''}`}
+                  className={`rating-star ${star <= (hoveredStar || userRating) ? 'filled' : ''} ${hasRated ? 'disabled' : ''}`}
                   onClick={() => handleStarClick(star)}
+                  onMouseEnter={() => !hasRated && setHoveredStar(star)}
+                  onMouseLeave={() => setHoveredStar(0)}
+                  style={{ cursor: hasRated ? 'not-allowed' : 'pointer' }}
                 >
                   ⭐
                 </span>
               ))}
             </div>
-            {hasRated && <p className="rating-feedback">Thanks for rating!</p>}
           </div>
         </div>
 
