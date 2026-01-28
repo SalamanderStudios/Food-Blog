@@ -11,12 +11,12 @@ function About() {
         <section>
           <h2>Our Story</h2>
           <p>
-            B.O.R.G. Night started as "Burger Night", a simple tradition among a group of friends who met every week at their favorite burger joint. 
+            B.O.R.G. Night started as "Burger Night", a simple tradition among a group of friends who met every week at our favorite burger joint. 
             What began as a casual meetup at the same spot became a cherished ritual; a time to reconnect, laugh, and enjoy good food together.
           </p>
           <p>
-            After 7 years of burgers and friendship, the group decided to evolve the tradition. Instead of going to the same place, 
-            they began exploring the world through food. Each week, they randomly select a country and cook a traditional dish from that nation's cuisine. 
+            After 7 years of burgers and cards, the group decided to evolve the tradition. Instead of going to the same place, 
+            we began exploring the world through food. Each week, we randomly select a country and cook a traditional dish from that nation's cuisine. 
             As the tradition expanded, "Burger Night" evolved into "Borger Night," and eventually became what it is today: B.O.R.G. Night or "Bites Of Random Geography", a celebration 
             of global flavors, cultural discovery, and most importantly the bonds that food creates.
           </p>
