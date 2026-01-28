@@ -785,6 +785,57 @@ export const recipes = [
       "Pan fry: Place chicken in hot oil and fry for 3-4 minutes on each side. Remove to paper towel to drain.",
       "Toast and assemble: Toast the sandwich buns. Spread the Chick-fil-A sauce on both sides of the buns. Top with lettuce, cheese, pickles, and crispy chicken. Serve immediately!"
     ]
+  },
+  {
+    id: 15,
+    title: "Pork Laab Recipe (Minced Pork Salad)",
+    author: "Jake T.",
+    country: "Laos",
+    region: "Southeast Asia",
+    date: "2026-01-28",
+    category: "Salads",
+    image: getImage('porkLaab.jpg'),
+    rating: 3.6,
+    prepTime: "15 minutes",
+    cookTime: "15 minutes",
+    servings: 4,
+    difficulty: "Medium",
+    vegetarian: false,
+    borgNight: true,
+    description: "A vibrant and flavorful Thai minced pork salad with toasted rice powder, fresh herbs, and a tangy lime dressing. Perfect as an appetizer or light meal.",
+    get totalTime() {
+      return calculateTotalTime(this.prepTime, this.cookTime);
+    },
+    ingredients: [
+      { header: "For the Toasted Rice Powder:" },
+      "1/4 cup uncooked sticky or jasmine rice",
+      { header: "Main Ingredients:" },
+      "1.5 lb minced pork",
+      "1 tbsp oil",
+      "50ml water",
+      "1 tbsp rice vinegar",
+      "1 tbsp soy sauce",
+      "Juice of 1-2 limes",
+      "3 tbsp toasted rice powder",
+      "2 tsp palm sugar (or honey/regular white sugar)",
+      "1-2 tsp chilli flakes",
+      "1 red onion, diced",
+      "5 spring onions, thinly sliced",
+      "A heck ton of fresh mint, very roughly chopped",
+      "A heck ton of fresh coriander or parsley, very roughly chopped",
+      { header: "For Serving:" },
+      "Lettuce leaves",
+      "Cucumber slices",
+      "2 cups cooked jasmine rice (optional)"
+    ],
+    instructions: [
+      "To make the rice powder, place a pan over low heat and add uncooked sticky or jasmine rice and toast until golden (about 8-10 minutes). Place into a food processor or spice grinder and grind into coarse powder. (Keep leftovers in jars for future laab).",
+      "In the same pan, add 1 tbsp oil and stir-fry the minced pork on low heat until cooked but not crispy or dark brown. Add water to prevent it from browning and help it stay juicy. Season with sugar, rice vinegar, and soy sauce.",
+      "Transfer pork to a large bowl and leave to cool.",
+      "To the same pan, add the red onion and fry for 3-4 minutes until softened. Add the chilli flakes and cook for 1-2 mins.",
+      "Add the red onion to the pork bowl. Add the toasted rice powder, herbs, and lime juice and gently mix to combine. Taste to adjust seasoning.",
+      "Serve on a large platter with lettuce and cucumber slices. Optionally serve with jasmine rice on the side. Eat by wrapping the pork salad in lettuce leaves/cucumber like a taco."
+    ]
   }
 ];
 
