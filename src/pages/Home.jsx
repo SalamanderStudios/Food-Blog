@@ -1,4 +1,5 @@
 import { recipes } from '../data/recipes'
+import { getAverageRating } from '../utils/recipeHelpers'
 import '../styles/pages.css'
 
 function Home({ onRecipeClick }) {
@@ -12,7 +13,7 @@ function Home({ onRecipeClick }) {
 
   // Sort recipes by B.O.R.G. rating (highest first) and take top 6 from ALL recipes
   const favoriteRecipes = [...recipes]
-    .sort((a, b) => b.rating - a.rating)
+    .sort((a, b) => getAverageRating(b.ratings) - getAverageRating(a.ratings))
     .slice(0, 6)
 
   // Get a random recipe from all recipes
@@ -50,7 +51,7 @@ function Home({ onRecipeClick }) {
                 <div className="recipe-meta">
                   <span className={`difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
                   <span className="tag region">{recipe.region}</span>
-                  <span className="rating">⭐ {recipe.rating}/5</span>
+                  <span className="rating">⭐ {getAverageRating(recipe.ratings).toFixed(1)}/5</span>
                 </div>
                 <p className="recipe-description">{recipe.description}</p>
               </div>
@@ -82,7 +83,7 @@ function Home({ onRecipeClick }) {
                 <div className="recipe-meta">
                   <span className={`difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
                   <span className="tag region">{recipe.region}</span>
-                  <span className="rating">⭐ {recipe.rating}/5</span>
+                  <span className="rating">⭐ {getAverageRating(recipe.ratings).toFixed(1)}/5</span>
                 </div>
                 <p className="recipe-description">{recipe.description}</p>
               </div>

@@ -2,6 +2,7 @@ import { recipes } from '../data/recipes'
 import { useState, useEffect, useRef } from 'react'
 import { saveRating, getRatings } from '../utils/ratingService'
 import { getDeviceId, hasDeviceRated, markDeviceRated, getDeviceRating, getDeviceRatingEntryKey } from '../utils/deviceId'
+import { getAverageRating } from '../utils/recipeHelpers'
 import '../styles/pages.css'
 
 function RecipeDetail({ recipeId, onBack }) {
@@ -129,7 +130,7 @@ function RecipeDetail({ recipeId, onBack }) {
           </div>
           <div className="info-box">
             <h3>B.O.R.G. Rating</h3>
-            <p>⭐ {recipe.rating}/5</p>
+            <p>⭐ {getAverageRating(recipe.ratings).toFixed(1)}/5</p>
           </div>
           <div className="info-box">
             <h3>Reader's Rating</h3>

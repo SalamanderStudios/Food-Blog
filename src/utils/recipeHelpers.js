@@ -31,3 +31,21 @@ export function calculateTotalTime(prepTime, cookTime) {
   
   return `${totalMinutes} minutes`;
 }
+
+// Helper function to calculate average rating from ratings object
+export function getAverageRating(ratingsObject) {
+  if (!ratingsObject || typeof ratingsObject !== 'object') {
+    return 0;
+  }
+  
+  const ratingsArray = Object.values(ratingsObject).filter(rating => rating !== null && rating !== undefined);
+  if (ratingsArray.length === 0) {
+    return 0;
+  }
+  
+  const sum = ratingsArray.reduce((acc, rating) => acc + rating, 0);
+  const raw = sum / ratingsArray.length;
+  // Stable rounding to 1 decimal to avoid floating-point toFixed edge-cases
+  const avg = Math.round((raw + 1e-9) * 10) / 10;
+  return avg;
+}

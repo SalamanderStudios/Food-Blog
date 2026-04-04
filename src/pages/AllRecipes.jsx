@@ -1,5 +1,6 @@
 import { recipes } from '../data/recipes'
 import { useState } from 'react'
+import { getAverageRating } from '../utils/recipeHelpers'
 import '../styles/pages.css'
 
 function AllRecipes({ onRecipeClick }) {
@@ -212,7 +213,7 @@ function AllRecipes({ onRecipeClick }) {
                 <div className="recipe-meta">
                   <span className={`difficulty difficulty-${recipe.difficulty.toLowerCase()}`}>{recipe.difficulty}</span>
                   <span className="tag region">{recipe.region}</span>
-                  <span className="rating">⭐ {recipe.rating}/5</span>
+                  <span className="rating">⭐ {getAverageRating(recipe.ratings).toFixed(1)}/5</span>
                 </div>
                 <p className="recipe-description">{recipe.description}</p>
               </div>
