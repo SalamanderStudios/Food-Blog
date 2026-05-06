@@ -67,7 +67,7 @@ function App() {
           setSelectedRecipeId(id)
           navigateTo('recipe', id)
         }} />}
-        {currentPage === 'recipe' && <RecipeDetail recipeId={selectedRecipeId} onBack={() => navigateTo('home')} />}
+        {currentPage === 'recipe' && <RecipeDetail recipeId={selectedRecipeId} onBack={() => navigateTo('all-recipes')} />}
         {currentPage === 'about' && <About />}
       </main>
 
