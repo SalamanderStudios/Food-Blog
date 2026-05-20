@@ -29,26 +29,9 @@ function About() {
         <section>
           <h2>What We Do</h2>
           <p>
-            Each week, we randomly select a country and cook a traditional dish from that nation's cuisine. We document these culinary adventures 
-            and share the recipes here so you can explore the world through food alongside us. Our goal is to inspire you to step outside your 
-            comfort zone, discover new flavors, and create meaningful memories around the dinner table, just like we do at B.O.R.G. Night. Bonus points if you
-            break out a board game or cards after dinner as is tradition for us!
+            We’re just a bunch of friends who use food as an excuse to explore different cuisines and share what we learn. Each week we randomly pick a country,
+            cook one of its traditional dishes, and document the process. It’s more about the experience of trying new flavors together than anything else.
           </p>
-        </section>
-
-        <section>
-          <h2>Our Values</h2>
-          <ul className="values-list">
-            <li>
-              <strong>Simplicity</strong> - We believe cooking should be simple and fun, not stressful.
-            </li>
-            <li>
-              <strong>Quality</strong> - We only share recipes we've personally tested and loved.
-            </li>
-            <li>
-              <strong>Community</strong> - Food brings people together. We love hearing from our readers!
-            </li>
-          </ul>
         </section>
 
         <section>
