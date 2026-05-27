@@ -1742,6 +1742,49 @@ export const recipes = [
       "Top with crispy fried chicken, pepperjack cheese (optional), and pickled onions.",
       "Drizzle extra crema, add top bun, and serve with hot elote and lime wedges."
     ]
+  },
+  {
+    id: 29,
+    title: "Italian Sausage Bean and Rice Skillet",
+    author: "Jake T.",
+    country: "Italy",
+    region: "Europe",
+    date: "2026-05-27",
+    category: "Main Courses",
+    image: getImage('ItalianSausageBeanRiceSkillet.jpg'),
+    ratings: { Jake: 3.9, Emily: 3.2, Tess: 4.2, Joe: 4.4, Beatrice: 3.8, Fiona: null, Mic: null },
+    prepTime: "10 minutes",
+    cookTime: "40 minutes",
+    servings: 8,
+    difficulty: "Easy",
+    vegetarian: false,
+    borgNight: true,
+    description: "This Italian Sausage Bean and Rice Skillet is tasty, hearty, and easy to make for a perfect one-pot meal!",
+    get totalTime() {
+      return calculateTotalTime(this.prepTime, this.cookTime);
+    },
+    ingredients: [
+      "1-1.5 lb uncooked Italian sausage, removed from casings if present",
+      "1 small red onion, diced",
+      "1 medium zucchini, chopped",
+      "5 garlic cloves, minced",
+      "2 cups uncooked long grain white rice",
+      "1 (15.5 oz) can cannellini beans, drained and rinsed",
+      "1 (15 oz) can petite diced tomatoes",
+      "1 (8 oz) can tomato sauce",
+      "1 tablespoon balsamic vinegar",
+      "1 tablespoon Italian seasoning",
+      "½ teaspoon salt",
+      "¼ teaspoon black pepper",
+      "½ teaspoon red pepper flakes",
+      "3 ½ cups reduced sodium chicken broth"
+    ],
+    instructions: [
+      "Lightly mist a large sauté pan or walled skillet with cooking spray and bring over medium heat. Add the sausage and cook, breaking up with a spatula or cooking spoon until it starts to brown a bit and break into small chunks. If the meat has released grease/liquid, drain it from the pan at this time.",
+      "Add the chopped onion and zucchini and stir. Continue to cook for another 5 minutes until the onions are softened and the sausage is cooked through. Add the minced garlic and stir. Cook for another 30-60 seconds until fragrant.",
+      "Add the rice and stir to combine. Cook for another minute. Add the beans, diced tomatoes, tomato sauce, balsamic vinegar, Italian seasoning, salt, pepper, and red pepper flakes and stir to combine. Add the broth and stir together.",
+      "Increase the burner heat to bring the mixture to a boil. Cover the pan and reduce the heat to low to allow the mixture to simmer. Simmer for 22-28 minutes, stirring a few times during the process so the rice on the bottom doesn't stick, until the rice is cooked to your preference and the liquid is mostly absorbed. Serve warm."
+    ]
   }
 ];
 
