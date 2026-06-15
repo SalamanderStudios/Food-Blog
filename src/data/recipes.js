@@ -1823,7 +1823,7 @@ export const recipes = [
       "Pat the steak dry and season generously on both sides with the kosher salt. Heat a cast iron skillet over medium-high to high heat until very hot. Add the avocado oil.",
       "Place the steak in the skillet and sear for 2 minutes. Add the garlic and flip and sear the second side for 1 minute.",
       "Add 3 tablespoons of the butter and the thyme sprigs to the pan. Tilt the skillet slightly and continuously spoon the melted butter over the steak for 1-2 minutes, depending on your desired doneness.",
-      "Transfer the steak to a plate or cutting board and allow it to rest while preparing the sauce.",
+      "Transfer the steak and thyme to a plate or cutting board and allow it to rest while preparing the sauce.",
       "Add the sliced onion to the same skillet and cook for about 3-4 minutes, stirring occasionally, until softened and lightly golden.",
       "Pour in the cognac or brandy and stir, scraping any browned bits from the bottom of the pan. Allow it to simmer until the alcohol has cooked off, about 1 minute.",
       "Add the remaining 2 tablespoons butter, the half-and-half, and additional salt and cracked black pepper to taste. Stir continuously and simmer for 1-2 minutes until the sauce is slightly thickened.",
