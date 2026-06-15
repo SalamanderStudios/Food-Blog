@@ -186,7 +186,7 @@ export const recipes = [
       "1 tbsp (15 ml) oil",
       "2 green cardamoms (or 1/4 to 1/3 tsp ground cardamom, elaichi)",
       "1 cup (130 grams) onions (sliced or diced from 1 medium yellow or 2 small red onions)",
-      "1 inch (10 grams) ginger (peeled & sliced or use 1.5 to 2 tsp ginger garlic paste, read notes)",
+      "1 inch (10 grams) ginger (peeled & sliced or use 1.5 to 2 tsp ginger garlic paste)",
       "5 to 6 (12 grams) large garlic cloves (peeled, omit to use gg paste)",
       "2 cups (350 grams) tomatoes (sliced, use up to 420 grams from 2 large or 4 medium)",
       "1 tsp sea salt (adjust to taste)",
@@ -1774,10 +1774,10 @@ export const recipes = [
       "1 (8 oz) can tomato sauce",
       "1 tablespoon balsamic vinegar",
       "1 tablespoon Italian seasoning",
-      "½ teaspoon salt",
-      "¼ teaspoon black pepper",
-      "½ teaspoon red pepper flakes",
-      "3 ½ cups reduced sodium chicken broth"
+      "1/2 teaspoon salt",
+      "1/4 teaspoon black pepper",
+      "1/2 teaspoon red pepper flakes",
+      "3 1/2 cups reduced sodium chicken broth"
     ],
     instructions: [
       "Lightly mist a large sauté pan or walled skillet with cooking spray and bring over medium heat. Add the sausage and cook, breaking up with a spatula or cooking spoon until it starts to brown a bit and break into small chunks. If the meat has released grease/liquid, drain it from the pan at this time.",
@@ -1785,7 +1785,101 @@ export const recipes = [
       "Add the rice and stir to combine. Cook for another minute. Add the beans, diced tomatoes, tomato sauce, balsamic vinegar, Italian seasoning, salt, pepper, and red pepper flakes and stir to combine. Add the broth and stir together.",
       "Increase the burner heat to bring the mixture to a boil. Cover the pan and reduce the heat to low to allow the mixture to simmer. Simmer for 22-28 minutes, stirring a few times during the process so the rice on the bottom doesn't stick, until the rice is cooked to your preference and the liquid is mostly absorbed. Serve warm."
     ]
+  },
+    {
+      id: 30,
+      title: "Jake's Au Poivre Steak",
+      author: "Jake T.",
+      country: "France",
+      region: "Europe",
+      date: "2026-06-15",
+      category: "Main Courses",
+      image: getImage('AuPoivreSteak.jpg'),
+      ratings: { Jake: 5, Emily: 4.8, Tess: null, Joe: null, Beatrice: null, Fiona: null, Mic: null },
+      prepTime: "10 minutes",
+      cookTime: "10 minutes",
+      servings: 2,
+      difficulty: "Easy",
+      vegetarian: false,
+      borgNight: false,
+      description: "Jake's Au Poivre Steak is a classic French dish featuring a perfectly seared steak coated in cracked black peppercorns, served with a rich and creamy cognac-infused pan sauce. It's the ultimate indulgence for steak lovers.",
+      get totalTime() {
+        return calculateTotalTime(this.prepTime, this.cookTime);
+      },
+    ingredients: [
+      "1 large 1 inch thick ribeye or porterhouse steak (12-16 oz)",
+      "1 tablespoon avocado oil (or other high-heat oil)",
+      "1 teaspoon kosher salt",
+      "1-2 teaspoons coarsely cracked black pepper",
+      "5 tablespoons butter, divided",
+      "2-3 sprigs fresh thyme",
+      "1/2 medium yellow onion, thinly sliced",
+      "1/2 cup cognac or brandy",
+      "1/2 cup half-and-half",
+      "Additional salt and cracked black pepper, to taste"
+    ],
+    instructions: [
+      "Pat the steak dry and season generously on both sides with the kosher salt. Heat a cast iron skillet over medium-high to high heat until very hot. Add the avocado oil.",
+      "Place the steak in the skillet and sear for 2 minutes. Flip and sear the second side for 1 minute.",
+      "Add 3 tablespoons of the butter and the thyme sprigs to the pan. Tilt the skillet slightly and continuously spoon the melted butter over the steak for 1-2 minutes, depending on your desired doneness.",
+      "Transfer the steak to a plate or cutting board and allow it to rest while preparing the sauce.",
+      "Add the sliced onion to the same skillet and cook for about 3-4 minutes, stirring occasionally, until softened and lightly golden.",
+      "Pour in the cognac or brandy and stir, scraping any browned bits from the bottom of the pan. Allow it to simmer until the alcohol has cooked off, about 1 minute.",
+      "Add the remaining 2 tablespoons butter, the half-and-half, and additional salt and cracked black pepper to taste. Stir continuously and simmer for 1-2 minutes until the sauce is slightly thickened.",
+      "Slice the rested steak if desired and serve topped with the au poivre sauce."
+    ]
+  },
+    {
+      id: 31,
+      title: "Teriyaki Chicken with Coconut Rice, Roasted Sweet Potatoes, and Tropical Fruit Salad",
+      author: "Jake T.",
+      country: "Fiji",
+      region: "Oceania",
+      date: "2026-06-01",
+      category: "Main Courses",
+      image: getImage('Fiji.jpg'),
+      ratings: { Jake: 3.2, Emily: 3, Tess: 3, Joe: 3.1, Beatrice: 2.5, Fiona: null, Mic: null },
+      prepTime: "10 minutes",
+      cookTime: "10 minutes",
+      servings: 5,
+      difficulty: "Medium",
+      vegetarian: false,
+      borgNight: true,
+      description: "This is a vibrant and flavorful dish featuring tender chicken thighs marinated in a savory teriyaki sauce, served with fluffy coconut rice, caramelized sweet potatoes, and a refreshing tropical fruit salad.",
+      get totalTime() {
+        return calculateTotalTime(this.prepTime, this.cookTime);
+      },
+    ingredients: [
+      "2 lbs of 3/4 inch cubed boneless skinless chicken thighs",
+      "1 cup teriyaki sauce",
+      "2 tablespoons soy sauce",
+      "1 tablespoon brown sugar",
+      "2 cloves garlic, minced",
+      "1 teaspoon grated fresh ginger",
+      "3 large sweet potatoes, peeled and cubed",
+      "2 tablespoons olive oil",
+      "1 teaspoon salt",
+      "1/2 teaspoon black pepper",
+      "1/2 teaspoon smoked paprika",
+      "2 cups jasmine rice",
+      "1 (13.5 oz) can coconut milk",
+      "1 cup water",
+      "1 teaspoon salt",
+      "2 cups fresh pineapple, diced",
+      "2 cups fresh mango, diced",
+      "2 cups fresh kiwi, diced",
+      "Juice of 1 lime",
+      "1 tablespoon fresh mint, chopped (optional)",
+      "Pinch of sea salt"
+    ],
+    instructions: [
+      "In a large bowl, combine the teriyaki sauce, soy sauce, brown sugar, garlic, and ginger. Add the chicken and toss to coat. Cover and refrigerate for at least 30 minutes or up to 8 hours.",
+      "Preheat the oven to 425°F. Place the cubed sweet potatoes in a large mixing bowl Drizzle with olive oil and season with 1 teaspoon salt, black pepper, and smoked paprika. Toss to coat evenly.",
+      "Roast the sweet potatoes on a baking sheet for 25-30 minutes, stirring halfway through, until tender and lightly caramelized.",
+      "While the sweet potatoes roast, rinse the jasmine rice until the water runs mostly clear. Add the rice, coconut milk, water, and 1 teaspoon salt to a rice cooker, or medium saucepan. if using pan, Bring to a boil, then cover and reduce heat to low. Cook for 15-18 minutes until the liquid is absorbed. Remove from heat and let rest, covered, for 10 minutes before fluffing with a fork.",
+      "Heat a large skillet or grill pan over medium-high heat. Remove the chicken from the marinade and cook for 5-7 minutes per side, brushing with additional teriyaki sauce if desired, until the internal temperature reaches 165°F.",
+      "While the chicken cooks, combine the pineapple, mango, and kiwi in a large bowl. Add the lime juice from 1 lime, mint (if using), and a pinch of sea salt. Toss gently to combine.",
+      "Serve teriyaki chicken alongside the coconut rice, roasted sweet potatoes, and tropical fruit salad."
+    ]
   }
 ];
-
-
