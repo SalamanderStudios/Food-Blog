@@ -35,13 +35,13 @@
  * @param {Recipe} recipeData - Recipe data object
  * @returns {Recipe} Complete recipe object with totalTime getter
  */
+import { calculateTotalTime } from '../utils/recipeHelpers.js'
+
 export function createRecipe(recipeData) {
-  const { calculateTotalTime } = require('../utils/recipeHelpers.js');
-  
   return {
     ...recipeData,
     get totalTime() {
-      return calculateTotalTime(this.prepTime, this.cookTime);
+      return calculateTotalTime(this.prepTime, this.cookTime)
     }
-  };
+  }
 }

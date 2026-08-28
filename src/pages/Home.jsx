@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { recipes } from '../data/recipes'
 import { getAverageRating } from '../utils/recipeHelpers'
 import '../styles/pages.css'
 
 function Home({ onRecipeClick }) {
+  const [randomRecipeId, setRandomRecipeId] = useState(recipes[0]?.id ?? null)
+
   // Filter for B.O.R.G. Night recipes only
   const borgRecipes = recipes.filter(recipe => recipe.borgNight === true)
   
@@ -16,8 +19,8 @@ function Home({ onRecipeClick }) {
     .sort((a, b) => getAverageRating(b.ratings) - getAverageRating(a.ratings))
     .slice(0, 6)
 
-  // Get a random recipe from all recipes
-  const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)]
+  // Get a random recipe from all recipes, choosing it only in event-driven code
+  const randomRecipe = recipes.find(recipe => recipe.id === randomRecipeId) ?? recipes[0] ?? null
 
   return (
     <div className="home">
@@ -95,7 +98,12 @@ function Home({ onRecipeClick }) {
       <section className="random-recipe-section">
         <button 
           className="random-recipe-button"
-          onClick={() => onRecipeClick(randomRecipe.id)}
+          onClick={() => {
+            if (!recipes.length) return
+            const nextRecipe = recipes[Math.floor(Math.random() * recipes.length)]
+            setRandomRecipeId(nextRecipe.id)
+            onRecipeClick(nextRecipe.id)
+          }}
         >
           Try a Random Recipe
         </button>

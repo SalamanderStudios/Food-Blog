@@ -1,27 +1,24 @@
 import { recipes } from '../data/recipes'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { saveRating, getRatings } from '../utils/ratingService'
-import { getDeviceId, hasDeviceRated, markDeviceRated, getDeviceRating, getDeviceRatingEntryKey } from '../utils/deviceId'
+import { hasDeviceRated, markDeviceRated, getDeviceRating, getDeviceRatingEntryKey } from '../utils/deviceId'
 import { getAverageRating } from '../utils/recipeHelpers'
 import '../styles/pages.css'
 
 function RecipeDetail({ recipeId, onBack }) {
-  const recipe = recipes.find(r => r.id === recipeId)
+  const recipe = useMemo(() => recipes.find(r => r.id === recipeId), [recipeId])
   const [userRating, setUserRating] = useState(0)
   const [hasRated, setHasRated] = useState(false)
   const [allRatings, setAllRatings] = useState([])
-  const [loading, setLoading] = useState(true)
   const [hoveredStar, setHoveredStar] = useState(0)
   const unsubscribeRef = useRef(null)
 
-  if (!recipe) {
-    return <div className="recipe-detail">Recipe not found</div>
-  }
-
   // Fetch ratings from Firebase on component mount and set up real-time listener
   useEffect(() => {
-    setLoading(true)
-    
+    if (!recipe) {
+      return undefined
+    }
+
     // Check if this device has already rated this recipe using fingerprint
     const checkDeviceRating = async () => {
       try {
@@ -37,12 +34,11 @@ function RecipeDetail({ recipeId, onBack }) {
         console.error('Error checking device rating:', error)
       }
     }
-    
+
     checkDeviceRating()
-    
+
     unsubscribeRef.current = getRatings(recipe.id, (ratings) => {
       setAllRatings(ratings)
-      setLoading(false)
     })
 
     // Cleanup listener on unmount
@@ -51,7 +47,11 @@ function RecipeDetail({ recipeId, onBack }) {
         unsubscribeRef.current()
       }
     }
-  }, [recipe.id])
+  }, [recipe])
+
+  if (!recipe) {
+    return <div className="recipe-detail">Recipe not found</div>
+  }
 
   const handleStarClick = async (rating) => {
     // Check if they've already rated

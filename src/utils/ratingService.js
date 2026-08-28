@@ -1,5 +1,5 @@
 import { database } from '../config/firebase'
-import { ref, push, set, onValue, query, orderByChild } from 'firebase/database'
+import { ref, push, set, onValue } from 'firebase/database'
 
 export const saveRating = async (recipeId, rating, entryKey = null) => {
   try {

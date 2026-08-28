@@ -78,16 +78,17 @@ function AllRecipes({ onRecipeClick }) {
     }
 
     // Apply sorting
-    switch(sortBy) {
+    switch (sortBy) {
       case 'date':
         return filtered.sort((a, b) => new Date(b.date) - new Date(a.date))
       case 'borg-rating':
-        return filtered.sort((a, b) => b.rating - a.rating)
+        return filtered.sort((a, b) => getAverageRating(b.ratings) - getAverageRating(a.ratings))
       case 'reader-rating':
-        return filtered.sort((a, b) => (b.averageReaderRating || 0) - (a.averageReaderRating || 0))
-      case 'difficulty':
+        return filtered.sort((a, b) => getAverageRating(b.ratings) - getAverageRating(a.ratings))
+      case 'difficulty': {
         const difficultyOrder = { 'Easy': 1, 'Medium': 2, 'Hard': 3 }
         return filtered.sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty])
+      }
       default:
         return filtered
     }
