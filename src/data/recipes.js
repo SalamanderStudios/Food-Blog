@@ -2337,7 +2337,7 @@ export const recipes = [
     country: "Algeria",
     region: "Africa",
     date: "2026-08-28",
-    category: "Main Courses",
+    category: "Sides",
     image: getImage('AlgerianCousCous.jpg'),
     ratings: { Jake: 4.2, Emily: 3.9, Tess: 4.1, Joe: 4.3, Beatrice: 4.5, Fiona: null, Mic: null, EmilyP: null },
     prepTime: "15 minutes",
